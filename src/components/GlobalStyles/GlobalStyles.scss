@@ -7,6 +7,10 @@
     // Default layout
     --default-layout-width: 1150px;
     --default-layout-height: 60px;
+    --search-height: 46px;
+
+    --black: #000000;
+    --text-color: #333;
 }
 
 * {
@@ -24,4 +28,16 @@ body {
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+}
+
+button,
+input,
+[tabindex] {
+    border: none;
+    outline: none;
+}
+
+a[href] {
+    color: var(--text-color);
+    text-decoration: none;
 }

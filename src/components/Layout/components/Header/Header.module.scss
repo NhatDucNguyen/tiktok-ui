@@ -12,5 +12,72 @@
 .inner {
     height: 100%;
     width: var(--default-layout-width);
-    background-color: #ccc;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+}
+
+.search {
+    width: 361px;
+    height: var(--search-height);
+    padding-left: 16px;
+
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    background-color: rgba(22, 24, 35, 0.06);
+
+    border-radius: 92px;
+    border: 1.5px solid transparent;
+    overflow: hidden;
+
+    input {
+        flex: 1;
+        height: 100%;
+        font-size: 1.6rem;
+        caret-color: var(--primary);
+
+        color: var(--black);
+        background-color: transparent;
+    }
+
+    input:not(:placeholder-shown) ~ .search-btn {
+        color: rgba(22, 24, 35, 0.75);
+    }
+
+    &:focus-within {
+        border-color: rgba(22, 24, 35, 0.2);
+    }
+}
+
+.clear,
+.loading {
+    color: rgba(22, 24, 35, 0.34);
+    margin: 0 12px;
+}
+
+.divider {
+    width: 1px;
+    height: calc((var(--search-height) / 100) * 60);
+    background-color: rgba(22, 24, 35, 0.12);
+}
+
+.search-btn {
+    width: 52px;
+    height: 100%;
+    color: rgba(22, 24, 35, 0.34);
+    font-size: 1.6rem;
+
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+
+    &:active {
+        background-color: rgba(22, 24, 35, 0.06);
+    }
 }
