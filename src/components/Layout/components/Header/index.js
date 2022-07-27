@@ -5,17 +5,41 @@ import styles from './Header.module.scss';
 
 import Tippy from '@tippyjs/react/headless'; // different import path!
 
-import images from '~/assets/images';
-import icons from '~/assets/icons';
-import Button from '~/components/Button';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faMagnifyingGlass, faSignIn, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCircleXmark,
+    faEllipsisVertical,
+    faMagnifyingGlass,
+    faSpinner,
+    faCircleQuestion,
+    faEarthAsia,
+    faKeyboard,
+} from '@fortawesome/free-solid-svg-icons';
+
+import images from '~/assets/images';
+import Button from '~/components/Button';
 
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItems from '~/components/AccountItems';
+import Menu from '~/components/Popper/Menu';
 
 const cx = classNames.bind(styles);
+
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        title: 'English',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback and help',
+        to: '/feedback',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Keyboard shortcuts',
+    },
+];
 
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
@@ -52,17 +76,14 @@ function Header() {
                             <input placeholder="Search accounts and videos" spellCheck={false} />
 
                             <button className={cx('clear')}>
-                                {/* <img src={icons.close} alt="Close" /> */}
                                 <FontAwesomeIcon icon={faCircleXmark} />
                             </button>
 
                             <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-                            {/* <img src={icons.loading} alt="Loading" /> */}
 
                             <span className={cx('divider')}></span>
 
                             <button className={cx('search-btn')}>
-                                {/* <img src={icons.search} alt="Search" /> */}
                                 <FontAwesomeIcon icon={faMagnifyingGlass} />
                             </button>
                         </div>
@@ -72,6 +93,12 @@ function Header() {
                 <div className={cx('actions')}>
                     <Button text>Upload</Button>
                     <Button primary>Log in</Button>
+
+                    <Menu items={MENU_ITEMS}>
+                        <button className={cx('more-btn')}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                        </button>
+                    </Menu>
                 </div>
             </div>
         </header>
